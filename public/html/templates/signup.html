@@ -1,0 +1,39 @@
+<section class="content page">
+    <div ng-controller="newStudent as nSCtrl">
+        <h4 class="new">New Students</h4>
+        <input type="image" src="http://www.clker.com/cliparts/K/V/A/5/C/i/baby-silhouette-hi.png" class="new-user"
+         ng-click="nSCtrl.newStudent()" ng-hide="nSCtrl.myVar == true" width="30%" height="30%">
+        <form  ng-submit="auth.register.submit(0)" ng-show="nSCtrl.myVar == true" class="signup-form">
+            <!--<label class="label">Email</label>-->
+            <input id="emailId" required placeholder="Email" type="text" ng-model="auth.payload.email"/>
+            <!--<label for="password" class="label">Password</label>-->
+            <input required placeholder="Create a password" type="password" ng-model="auth.payload.password"/>
+            <button type="submit" class="btn">Register</button> <!--Upon clicking, bring user to appropriate profile type-->
+            <p ng-class="newStudentController.register.alert">{{ aControl.register.message }}</p>
+        </form>
+     </div>
+     <div ng-controller="newMentor as nMCtrl">
+        <h4 class="new">New Mentors</h4>
+        <input type="image" src="http://www.clker.com/cliparts/Y/j/p/0/0/y/business-man-hi.png" class="new-mentor"
+         ng-click="nMCtrl.newMentor()" ng-hide="nMCtrl.myVar == true" width="30%" height="30%">
+        <form  ng-submit="auth.register.submit(1)" ng-show="nMCtrl.myVar == true" class="signup-form">
+            <!--<label class="label">Email</label>-->
+            <input id="emailId" required placeholder="Email" type="text" ng-model="auth.payload.email"/>
+            <!--<label for="password" class="label">Password</label>-->
+            <input required placeholder="Create a password" type="password" ng-model="auth.payload.password"/>
+            <button type="submit" class="btn">Register</button> <!--Upon clicking, bring user to appropriate profile type-->
+            <p ng-class="newMentorController.register.alert">{{ aControl.register.message }}</p>
+        </form>
+    </div>
+    <div class="container loginstuff">
+        <h4 class="login">Already a member?</h4><button class="form-button" ng-click="auth.existingUser()">Login</button> <!-- look in main.js -->
+        <form ng-submit="auth.login.submit()" class="signup-form" ng-show="auth.myVar == true">
+            <!--<label class="label">Email</label>-->
+            <input class="login" required placeholder="Email" type="email" ng-model="auth.payload.email"/>
+            <!--<label for="password" class="label">Password</label>-->
+            <input class="login" required placeholder="Password" type="password" ng-model="auth.payload.password"/>
+            <button class="login" type="submit" class="btn">Login</button>
+            <p ng-class="aControl.login.alert">{{ aControl.login.message }}</p>
+        </form>
+    </div>     
+</section>

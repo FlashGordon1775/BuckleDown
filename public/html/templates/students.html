@@ -1,0 +1,26 @@
+
+<section class="content page">
+    <form class="find">
+        <input type="text" placeholder="Find Student" ng-model="sCtrl.student">
+        <button class="find-btn" type="submit" ng-click="sCtrl.searchStudent(sCtrl.student)">Submit</button>
+    </form>
+    <div>
+        <form class="form" ng-show="sCtrl.myVar1 == true">
+            <input type="text" placeholder="name" ng-model="sCtrl.nameText">
+            <textarea name="" id="input-box" cols="30" rows="10" placeholder="bio" ng-model="sCtrl.bioText"></textarea>
+            <textarea name="" id="input-box" cols="30" rows="10" placeholder="goals" ng-model="sCtrl.goalsText"></textarea>
+            <button type="submit" class="form-button" ng-click="sCtrl.updateProfile()">Close</button>
+        </form>
+    </div>
+    <div class="profile-info" ng-if="sCtrl.studentFound">
+        <div class="info">
+            <h3> {{ sCtrl.nameText }} </h3>
+            <h5>BIO</h5>
+            <p> {{ sCtrl.bioText }} </p>
+            <h5>Goals</h5>
+            <p> {{ sCtrl.goalsText }} </p>
+            <button type="submit" class="form-button" ng-click="sCtrl.updateProfile()">Edit</button>
+        </div>
+    </div>
+    <!--<div class="fb-comments" data-href="http://localhost:8080/?#/students" data-width="70%" data-numposts="5" data-colorscheme="dark" ng-init="fCtrl.init('script', 'facebook-jssdk')"></div>-->
+</section>

@@ -1,0 +1,22 @@
+<section class="content page">
+    <div>
+        <form class="form" ng-show="mCtrl.myVar1 == true">
+            <input type="text" placeholder="name" ng-model="mCtrl.nameText">
+            <textarea name="" id="input-box" cols="30" rows="10" placeholder="bio" ng-model="mCtrl.bioText"></textarea>
+            <textarea name="" id="input-box" cols="30" rows="10" placeholder="qualifications" ng-model="mCtrl.qualificationsText"></textarea>
+            <button type="submit" class="form-button" ng-click="mCtrl.updateProfile()">Close</button>
+        </form>
+    </div>
+    <div class="profile-info">
+        <div class="info">
+            <h3> {{ mCtrl.nameText }} </h3>
+            <h5>BIO</h5>
+            <p> {{ mCtrl.bioText }} </p>
+            <h5>Qualifications</h5>
+            <p> {{ mCtrl.qualificationsText }} </p>
+            <button type="submit" class="form-button" ng-click="mCtrl.updateProfile()">Edit</button>
+        </div>
+    </div>
+    <div class="fb-comments" data-href="http://localhost:8080/?#/mentors" data-width="70%" 
+    data-numposts="5" data-colorscheme="dark" ng-init="fCtrl.init('script', 'facebook-jssdk')"></div>
+</section>
