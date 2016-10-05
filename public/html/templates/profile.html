@@ -1,4 +1,89 @@
-<div class="content page">
-    <h1 class="heading">Hello!</h1>
-    <p>Ipsum fuck</p>
-</div>
+<!--<section>
+    <div>
+        <!--This div is for user background images-->
+    <!--</div>
+    <div class="content user-page">
+        <div>
+            <h1 class="heading">Hello!</h1>
+            <p>Ipsum fuck</p>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">.col-sm-6</div>
+            <div class="col-sm-6">.col-sm-6</div>
+        </div>
+    </div>
+</section>-->
+
+<section class="container content user-page">
+    <div class="row">
+        <!-- serve info from user database -->
+        <div class="col-md-12">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title"> <!--user name here--> {{ pCtrl.mentorName }} </h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAdvAAAAJGZlY2EwNTVhLTk4OTYtNDRmNS1hOGRjLTFjMDgwZjJiOGQ3ZQ.jpg" class="img-circle img-responsive"> </div>
+                        <div class="col-md-3 col-lg-3 " align="center">  </div>
+                        <div class=" col-md-9 col-lg-9 "> 
+                    <table class="table table-user-information">
+                        <tbody>
+                            <tr>
+                                <td>Career Field:</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Date of Birth:</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Gender:</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Email:</td>
+                                <td><a href=""></a></td>
+                            </tr>                    
+                        </tbody>
+                    </table>
+                </div>
+              </div>
+            </div>
+                <div class="panel-footer">
+                    <a type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a> <!-- messenging -->
+                    <span class="pull-right edit-remove">
+                        <a href="edit.html" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                        <a type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title"> News Feed </h3> <!-- or assignments -->
+                </div>
+                <div class="panel-body">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-infor">
+                <div class="panel-heading">
+                    <h3 class="panel-title"> Local Meetups </h3> <!-- meetup api -->
+                </div>
+                <div class="panel-body">
+
+                </div>
+                <div class="panel-body">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

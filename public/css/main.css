@@ -20,6 +20,10 @@ body {
     height: 100vh;
 }
 
+.bg-image {
+    max-height: 20em;
+}
+
 /*header {
     width: 25%;
     height: 50px;
@@ -266,4 +270,14 @@ img {
 
 .loginstuff {
     margin-top: 2em;
+}
+
+.panel-heading {
+    background-color: #193446 !important;
+    color: #d1a827 !important;
+}
+
+.edit-remove {
+    display: inline;
+    vertical-align: middle;
 }
