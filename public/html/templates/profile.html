@@ -14,36 +14,36 @@
     </div>
 </section>-->
 
-<section class="container content user-page">
+<section class="container content user-page" ng-init='pCtrl.getProfile()'>
     <div class="row">
         <!-- serve info from user database -->
         <div class="col-md-12">
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <h3 class="panel-title"> <!--user name here--> {{ pCtrl.mentorName }} </h3>
+                    <h3 class="panel-title" ng-hide="pCtrl.myVar == true"> <!--user name here--> {{ pCtrl.user.name }} <input type="text" placeholder="name" ng-show="pCtrl.myVar == true" ng-model="pCtrl.user.name"></h3>
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAdvAAAAJGZlY2EwNTVhLTk4OTYtNDRmNS1hOGRjLTFjMDgwZjJiOGQ3ZQ.jpg" class="img-circle img-responsive"> </div>
+                        <div class="col-md-3 col-lg-3 " align="center"> <img alt="" src="" class="img-circle img-responsive"> </div>
                         <div class="col-md-3 col-lg-3 " align="center">  </div>
                         <div class=" col-md-9 col-lg-9 "> 
                     <table class="table table-user-information">
                         <tbody>
                             <tr>
+                                <td>Role:</td>
+                                <td><!-- I need 0 to show as 'Mentee' and 1 to show as 'Mentor' --> <!--{{ pCtrl.user.role }}--> </td>
+                            </tr>
+                            <tr>
                                 <td>Career Field:</td>
-                                <td></td>
+                                <td> {{ pCtrl.user.area }} </td>
                             </tr>
                             <tr>
-                                <td>Date of Birth:</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Gender:</td>
-                                <td></td>
+                                <td>Years of Experience</td>
+                                <td> {{ pCtrl.user.exp }} </td>
                             </tr>
                             <tr>
                                 <td>Email:</td>
-                                <td><a href=""></a></td>
+                                <td><a href=""> {{ pCtrl.user.email }} </a></td>
                             </tr>                    
                         </tbody>
                     </table>
@@ -53,12 +53,23 @@
                 <div class="panel-footer">
                     <a type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a> <!-- messenging -->
                     <span class="pull-right edit-remove">
-                        <a href="edit.html" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
-                        <a type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                        <a href="" type="button" class="btn btn-sm btn-warning" ng-click="pCtrl.updateProfile()"><i class="glyphicon glyphicon-edit"></i></a>
+                        <a type="button" class="btn btn-sm btn-danger" href="#/signup">Logout</a>
                     </span>
                 </div>
             </div>
         </div>
+    </div>
+    <!--Edit form-->
+    <div>
+        <form class="form" ng-show="pCtrl.myVar == true">
+            <input type="text" placeholder="name" ng-model="pCtrl.user.name">
+            <input type="text" placeholder="role" ng-model="pCtrl.user.role">
+            <input type="text" placeholder="Career Field" ng-model="pCtrl.user.area">
+            <input type="text" placeholder="Date of Birth" ng-model="pCtrl.user.DOB">
+            <input type="text" placeholder="update email" ng-model="pCtrl.user.email">
+            <button type="submit" class="form-button" ng-click="pCtrl.updateProfile()">Save</button>
+        </form>
     </div>
     <div class="row">
         <div class="col-md-8">

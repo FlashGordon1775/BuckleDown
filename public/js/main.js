@@ -1,38 +1,37 @@
 angular.module("buckleDown", ["ngRoute", "ngAnimate"])
-    .controller("face", 
-     facebookController)
+    // .controller("face",  <!-- I am unsure if I will continue to use the facebook comments -->
+    //  facebookController)
     .controller('module.auth.controller',
      Auth)
     .controller("profile",
      profileController)
-    .factory("SFactory", studentFactory)
-    .factory("MFactory", mentorFactory)
+    .factory("UFactory", userFactory)
     .config(Router);
 
-profileController.$inject = ["SFactory", "MFactory"]
+profileController.$inject = ["UFactory", "$http"]
 
 Router.$inject = ["$routeProvider"];
 
 Auth.$inject = ['$http'];
 
-function facebookController(){
-    var fCtrl = this;
-    fCtrl.init = function (s, id) {
-                if(window.FB) {
-                    window.FB._initialized = false;
-                    return window.FB.XFBML.parse()
-                }
-                var js;                
-                if (document.getElementById(id)) {document.getElementById(id).remove()};
-                var fjs = document.getElementsByTagName(s)[0];
+// function facebookController(){
+//     var fCtrl = this;
+//     fCtrl.init = function (s, id) {
+//                 if(window.FB) {
+//                     window.FB._initialized = false;
+//                     return window.FB.XFBML.parse()
+//                 }
+//                 var js;                
+//                 if (document.getElementById(id)) {document.getElementById(id).remove()};
+//                 var fjs = document.getElementsByTagName(s)[0];
 
-                js = document.createElement(s); js.id = id;
-                js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7";
-                fjs.parentNode.insertBefore(js, fjs);
-                console.log(js, fjs);
+//                 js = document.createElement(s); js.id = id;
+//                 js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7";
+//                 fjs.parentNode.insertBefore(js, fjs);
+//                 console.log(js, fjs);
                 
-                };
-}
+//                 };
+// }
 
 Router.$inject = ["$routeProvider"];
 
@@ -75,195 +74,84 @@ function Router ($routeProvider){
         });
 }
 
-function profileController (SFactory, MFactory) {
+function profileController (UFactory, $http) {
 
     var pCtrl = this;
 
-    pCtrl.studentFound = false;
+    // pCtrl.studentIndex = -1;
 
-    pCtrl.studentIndex = -1;
+    pCtrl.getProfile = function () {
+        return $http.get('/me').then((resp) => {
 
-    var studentArray = SFactory.getStudentsLocal();
-
-    pCtrl.searchStudent = function (name) {
-        pCtrl.studentFound = false;
-        for (var i = 0; i < studentArray.length; i++){
-            if(studentArray[i].name ==  name){
-                pCtrl.menteeName = studentArray[i].name;
-                pCtrl.bioText = studentArray[i].bio;
-                pCtrl.goalsText = studentArray[i].goals;
-                pCtrl.studentFound = true;
-                pCtrl.studentIndex = i;
-            }
-        }
-       
-    }
+                        pCtrl.user = resp.data;
+            
+        })
+    };
     
     pCtrl.myVar = false;
 
     console.log('hello');
+
     
-    pCtrl.updateProfile = function(){
-        pCtrl.myVar = !pCtrl.myVar;
-        console.log('hi');
-        console.log(pCtrl.studentIndex);
-        if (pCtrl.studentIndex != -1) {
-            studentArray[pCtrl.studentIndex].name = pCtrl.nameText;
-            studentArray[pCtrl.studentIndex].bio = pCtrl.bioText;
-            studentArray[pCtrl.studentIndex].goals = pCtrl.goalsText;
-            SFactory.setStudentsLocal(studentArray);
-    }
-        console.log('hello');
 
-    }
+    // pCtrl.updateProfile = function(){
+    //     pCtrl.user.findByIdAndUpdate({_id: pCtrl.user.id}, { $set: { name: '' }}, { new: true }, function (err, user) {
 
-    pCtrl.mentorName = "Rob Gordon";
+    //     if (err){
+    //     return handleError(err);
+    //     }
+    //     res.send(user);
 
-    pCtrl.bioText = "Scenester DIY shoreditch deep v tote bag, street art paleo. Before they sold out blog salvia listicle, beard keytar in art party est readymade kale chips +1 crucifix id try-hard.Sustainable mixtape fingerstache, pitchfork banjo meditation hashtag artisan kitsch. Sustainable 3 wolf moon helvetica food truck art party, tote bag celiac. Dreamcatcher man bun YOLO butcher, literally banjo jean shorts twee next level drinking vinegar squid yuccie PBR&B art party brooklyn."
+    // });
+    // };
     
-    pCtrl.qualificationsText = "Hammock 8-bit lo-fi ullamco kombucha craft beer. Gentrify tempor wayfarers roof party pop-up. Ugh everyday carry semiotics tattooed nisi actually. Yuccie chia four dollar toast sint photo booth. Street art meggings synth, knausgaard fingerstache tofu lo-fi. Ennui letterpress flexitarian polaroid"
+    // pCtrl.updateProfile = function(){
+    //     pCtrl.myVar = !pCtrl.myVar;
+    //     console.log('hi');
+    //     $http.post('/me', pCtrl.user);
+    // //     console.log(pCtrl.studentIndex);
+    // //     if (pCtrl.studentIndex != -1) {
+    // //         studentArray[pCtrl.studentIndex].name = pCtrl.nameText;
+    // //         studentArray[pCtrl.studentIndex].bio = pCtrl.bioText;
+    // //         studentArray[pCtrl.studentIndex].goals = pCtrl.goalsText;
+    // //         SFactory.setStudentsLocal(studentArray);
+    // // }
+    //     console.log('hello');
 
-    pCtrl.myVar1 = false;
+    // };
 
-    console.log('hello');
-    
-    pCtrl.updateProfile = function(){
-        pCtrl.myVar1 = !pCtrl.myVar1;
-        console.log('hi');
+    //   pCtrl.updateProfile = function(){ //BULLSHIT!
+    //     pCtrl.myVar = !pCtrl.myVar;
+    //     console.log('hi');
+    //     pCtrl.user.update({_id: pCtrl.user.id},
+    //     {$set: {
+    //         name: '',
+    //     }})
+        
+    //     console.log('hello');
 
-    console.log('hello'); 
-        /*I need to make the updates to the user profiles permanent. 
-        Will do this at a later date. I have it completed for students. Just keep this as an example of a user's page.*/
-        }
-    
+    // };
+
 
     pCtrl.myVar2 = false;
-
-    console.log(SFactory);
-    //pCtrl.studentList = SFactory.studentList;
-    pCtrl.newStudentObject = {
-                        name: '',
-                        bio: '',
-                        goals: '',
-                }
 
     pCtrl.newStudent = function(){
         pCtrl.myVar2 = !pCtrl.myVar2;
         console.log('hi');
-    }
-
-
-    pCtrl.studentArray = JSON.parse(localStorage.getItem('studentArray')) || [];
-
-    pCtrl.addStudent = function (){ //I need to eventually time this in with the facebook comment stream. Each new user should have a fb comment section from the start.
-        SFactory.addStudent(pCtrl.newStudentObject);
-        pCtrl.studentArray.push(pCtrl.newStudentObject); 
-        localStorage.setItem('studentArray', JSON.stringify(pCtrl.studentArray));
-        pCtrl.newStudentObject = {
-                        name: '',
-                        bio: '',
-                        goals: '',
-                }
-        console.log('Hello from ', pCtrl.newStudentObject);
-        console.log('my students ', SFactory.getStudents());
-    }
-
-
+    };
 
     pCtrl.myVar3 = false;
 
-    console.log(MFactory);
-
-    pCtrl.newMentorObject = {
-                        name: '',
-                        bio: '',
-                        qualificaions: '',
-                    }
-
-    pCtrl.newMentor = function(){
+    pCtrl.newMentor = function(resp){
         pCtrl.myVar3 = !pCtrl.myVar3;
         console.log('hi');
-    }
+    };
 
-    pCtrl.mentorArray = JSON.parse(localStorage.getItem('mentorArray')) || [];
-
-    pCtrl.addMentor = function (){ //I need to eventually time this in with the facebook comment stream. Each new user should have a fb comment section from the start.
-        MFactory.addMentor(pCtrl.newMentorObject);
-        pCtrl.mentorArray.push(pCtrl.newMentorObject); 
-        localStorage.setItem('mentorArray', JSON.stringify(pCtrl.mentorArray));
-        pCtrl.newMentorObject = {
-                        name: '',
-                        bio: '', 
-                        qualifications: '',
-                    }
-
-        console.log('Hello from ', pCtrl.newMentorObject);
-        console.log('mentors ', MFactory.getMentors());
-        }
 };
 
-function studentFactory () {
-
-    var studentList = [];
-
-
-    var addStudent = function (student){
-        console.log('Hey ', student);
-        studentList.push(student);
-        console.log('Yo ', studentList);
-    }
-
-    var getStudents = function(){
-        return studentList;
-
-    }
-
-    var getStudentsLocal = function(){
-        return JSON.parse(localStorage.getItem('studentArray')) || [];
-    }
-
-    var setStudentsLocal = function(updatedStudents){
-        localStorage.setItem('studentArray', JSON.stringify(updatedStudents));
-    }
+function userFactory () {
 
     return {
-
-        addStudent : addStudent,
-        getStudents : getStudents,
-        getStudentsLocal : getStudentsLocal,
-        setStudentsLocal : setStudentsLocal,
-    }
-
-}
-
-function mentorFactory () {
-
-    var mentorList = [
-
-        {
-            name: "Rob",
-            bio: "yada yak blah",
-            qualificaions: "more ipsum stuff",
-        }
-
-
-    ];
-
-    var addMentor = function (mentor){
-        console.log('Heck yes ', mentor);
-        mentorList.push(mentor);
-        console.log('Yolo ', mentorList);
-    }
-
-    var getMentors = function(){
-        return mentorList;
-
-    }
-
-    return {
-
-        addMentor : addMentor,
-        getMentors : getMentors,
 
     }
 

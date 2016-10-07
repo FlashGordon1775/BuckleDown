@@ -10,8 +10,12 @@ var userSchema = mongoose.Schema( {
     name: {type: String},
     email: {type:String},
     password: {type: String}, //encrypted
-    role: {type: Boolean}, //0 for mentee 1 for mentor
-    bio: {type: String},
+    role: {
+        type: Boolean,
+        // true: "Mentee",
+        // false: "Mentor"
+        }, //0 for mentee 1 for mentor
+    exp: {type: Number},
     area: {type: String}, //Area of focus for mentors and mentees. 
     created: {
             type: Number,

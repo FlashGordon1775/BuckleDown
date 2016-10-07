@@ -4,9 +4,11 @@
         <input type="image" src="http://www.clker.com/cliparts/K/V/A/5/C/i/baby-silhouette-hi.png" class="new-user"
          ng-click="pCtrl.newStudent()" ng-hide="pCtrl.myVar2 == true" width="30%" height="30%">
         <form  ng-submit="auth.register.submit(0)" ng-show="pCtrl.myVar2 == true" class="signup-form">
-            <!--<label class="label">Email</label>-->
-            <input id="emailId" required placeholder="Email" type="text" ng-model="auth.payload.email"/>
-            <!--<label for="password" class="label">Password</label>-->
+            <!--<input placeholder="User Image" type="image" ng-model="auth.payload.profilePic">-->
+            <input required placeholder="First and Last Name" type="text" ng-model="auth.payload.name">
+            <input placeholder="Years of Experience" type="text" ng-model="auth.payload.exp"/>
+            <input placeholder="Career Field" type="text" ng-model="auth.payload.area">
+            <input required placeholder="Email" type="text" ng-model="auth.payload.email"/>
             <input required placeholder="Create a password" type="password" ng-model="auth.payload.password"/>
             <button type="submit" class="btn">Register</button> <!--Upon clicking, bring user to appropriate profile type-->
             <p ng-class="profileController.register.alert">{{ aControl.register.message }}</p>
@@ -17,9 +19,10 @@
         <input type="image" src="http://www.clker.com/cliparts/Y/j/p/0/0/y/business-man-hi.png" class="new-mentor"
          ng-click="pCtrl.newMentor()" ng-hide="pCtrl.myVar3 == true" width="30%" height="30%">
         <form  ng-submit="auth.register.submit(1)" ng-show="pCtrl.myVar3 == true" class="signup-form">
-            <!--<label class="label">Email</label>-->
+            <input required placeholder="First and Last Name" type="text" ng-model="auth.payload.name">
+            <input placeholder="Years of Experience" type="text" ng-model="auth.payload.exp"/>
+            <input placeholder="Career Field" type="text" ng-model="auth.payload.area">
             <input id="emailId" required placeholder="Email" type="text" ng-model="auth.payload.email"/>
-            <!--<label for="password" class="label">Password</label>-->
             <input required placeholder="Create a password" type="password" ng-model="auth.payload.password"/>
             <button type="submit" class="btn">Register</button> <!--Upon clicking, bring user to appropriate profile type-->
             <p ng-class="profileController.register.alert">{{ aControl.register.message }}</p>
