@@ -78,73 +78,51 @@ function profileController (UFactory, $http) {
 
     var pCtrl = this;
 
-    // pCtrl.studentIndex = -1;
 
     pCtrl.getProfile = function () {
         return $http.get('/me').then((resp) => {
 
-                        pCtrl.user = resp.data;
-            
-        })
-    };
+                pCtrl.user = resp.data;
+
+            if ( pCtrl.user.role === false ) { 
+                console.log("Mentee as 0");
+                pCtrl.user.role = "Mentee";
+            } else {
+                console.log("Mentor as 1");
+                pCtrl.user.role = "Mentor";
+                }
+            })
+        };
     
     pCtrl.myVar = false;
 
     console.log('hello');
 
-    
-
-    // pCtrl.updateProfile = function(){
-    //     pCtrl.user.findByIdAndUpdate({_id: pCtrl.user.id}, { $set: { name: '' }}, { new: true }, function (err, user) {
-
-    //     if (err){
-    //     return handleError(err);
-    //     }
-    //     res.send(user);
-
-    // });
-    // };
-    
-    // pCtrl.updateProfile = function(){
-    //     pCtrl.myVar = !pCtrl.myVar;
-    //     console.log('hi');
-    //     $http.post('/me', pCtrl.user);
-    // //     console.log(pCtrl.studentIndex);
-    // //     if (pCtrl.studentIndex != -1) {
-    // //         studentArray[pCtrl.studentIndex].name = pCtrl.nameText;
-    // //         studentArray[pCtrl.studentIndex].bio = pCtrl.bioText;
-    // //         studentArray[pCtrl.studentIndex].goals = pCtrl.goalsText;
-    // //         SFactory.setStudentsLocal(studentArray);
-    // // }
-    //     console.log('hello');
-
-    // };
-
-    //   pCtrl.updateProfile = function(){ //BULLSHIT!
-    //     pCtrl.myVar = !pCtrl.myVar;
-    //     console.log('hi');
-    //     pCtrl.user.update({_id: pCtrl.user.id},
-    //     {$set: {
-    //         name: '',
-    //     }})
-        
-    //     console.log('hello');
-
-    // };
+    pCtrl.updateProfile = function () {
+        pCtrl.myVar = !pCtrl.myVar;
+                    
+        $http.post('/updateProfile', pCtrl.user).success(function(){
+                console.log("success");
+            }).error(function(error){
+                    console.log("error");
+            })
+        };
 
 
     pCtrl.myVar2 = false;
 
     pCtrl.newStudent = function(){
         pCtrl.myVar2 = !pCtrl.myVar2;
-        console.log('hi');
+        // pCtrl.user.role = "Mentee";
+        console.log('hi new mentee');
     };
 
     pCtrl.myVar3 = false;
 
     pCtrl.newMentor = function(resp){
         pCtrl.myVar3 = !pCtrl.myVar3;
-        console.log('hi');
+        // pCtrl.user.role = "Mentor";
+        console.log('hi new mentor');
     };
 
 };

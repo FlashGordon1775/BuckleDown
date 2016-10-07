@@ -14,24 +14,24 @@
     </div>
 </section>-->
 
-<section class="container content user-page" ng-init='pCtrl.getProfile()'>
+<section class="container content user-page" ng-init='pCtrl.getProfile()' ng-model="pCtrl.user">
     <div class="row">
         <!-- serve info from user database -->
         <div class="col-md-12">
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <h3 class="panel-title" ng-hide="pCtrl.myVar == true"> <!--user name here--> {{ pCtrl.user.name }} <input type="text" placeholder="name" ng-show="pCtrl.myVar == true" ng-model="pCtrl.user.name"></h3>
+                    <h3 class="panel-title" ng-hide="pCtrl.myVar == true"> <!--user name here--> {{ pCtrl.user.name }}</h3>
                 </div>
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-3 col-lg-3 " align="center"> <img alt="" src="" class="img-circle img-responsive"> </div>
-                        <div class="col-md-3 col-lg-3 " align="center">  </div>
+                        <div class="col-md-3 col-lg-3 " align="center"></div>
                         <div class=" col-md-9 col-lg-9 "> 
                     <table class="table table-user-information">
                         <tbody>
                             <tr>
                                 <td>Role:</td>
-                                <td><!-- I need 0 to show as 'Mentee' and 1 to show as 'Mentor' --> <!--{{ pCtrl.user.role }}--> </td>
+                                <td><!-- I need 0 to show as 'Mentee' and 1 to show as 'Mentor' --> {{ pCtrl.user.role }} </td>
                             </tr>
                             <tr>
                                 <td>Career Field:</td>
@@ -66,7 +66,7 @@
             <input type="text" placeholder="name" ng-model="pCtrl.user.name">
             <input type="text" placeholder="role" ng-model="pCtrl.user.role">
             <input type="text" placeholder="Career Field" ng-model="pCtrl.user.area">
-            <input type="text" placeholder="Date of Birth" ng-model="pCtrl.user.DOB">
+            <input type="text" placeholder="Years Exp" ng-model="pCtrl.user.exp">
             <input type="text" placeholder="update email" ng-model="pCtrl.user.email">
             <button type="submit" class="form-button" ng-click="pCtrl.updateProfile()">Save</button>
         </form>

@@ -1,6 +1,20 @@
 'use strict'
+// var config = require('../config.js') // MAKE SURE YOU GITIGNORE THIS FILE DAMNIT!
+// // NEW MODULE
+// var s3 = require('s3');
+// // Initial Config
+// var s3Client = s3.createClient({
+//     s3Options :{
+//         accessKeyId : config.AWS_KEY,
+//         secretAccessKey : 'SECRET'
+//     }
+// });
+// // DO NOT PUSH THESE TO GITHUB DAMNIT
+
 
 var Auth = require('./auth');
+
+var User = require('../models/user')
 
 module.exports = function(app) {
     // SITE ROOT
@@ -16,10 +30,22 @@ module.exports = function(app) {
     app.get('/me', (req, res) => {
         res.send(req.session.user);
     });
+    
+    app.post('/updateProfile', (req,res)=>{
+        console.log('sup?' + req.session.user._id);
+        console.log(req.body);
 
-    app.post('/me', (req, res) => {
-        res.send(req.session.user);
-    })
+
+        User.findOneAndUpdate({ _id: req.session.user._id }, req.body, { new: true }, (err, updatedUser) => {
+            if (err) {
+                console.log('update failed:', err);
+            } else {
+                console.log('updated user:', updatedUser);
+                req.session.user = updatedUser;
+                res.send('OK');
+            }
+        });
+    });
     // DAHSBOARD
     app.all('/dashboard*', Auth.session); // protect all dashboard routes from unauthorized users
     // app.get('/dashboard', (req, res) => { // renders the dashboard, break this out into another controller if needed!
