@@ -17,14 +17,19 @@
 <section class="container content user-page" ng-init='pCtrl.getProfile()' ng-model="pCtrl.user">
     <div class="row">
         <!-- serve info from user database -->
-        <div class="col-md-12">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <h3 class="panel-title" ng-hide="pCtrl.myVar == true"> <!--user name here--> {{ pCtrl.user.name }}</h3>
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-md-3 col-lg-3 " align="center"> <img alt="" src="" class="img-circle img-responsive"> </div>
+                        <div class="col-md-3 col-lg-3 " align="center">
+                            <!--<input class="file-upload" type="file" accept="image/*"> -->
+                            <img alt="" src="https://case.edu/medicine/admissions/media/school-of-medicine/admissions/classprofile.png" class="img-circle img-responsive"> 
+                        </div>
+                        <!--<div class="upload-button">Upload Image</div>-->
                         <div class="col-md-3 col-lg-3 " align="center"></div>
                         <div class=" col-md-9 col-lg-9 "> 
                     <table class="table table-user-information">
@@ -72,13 +77,17 @@
         </form>
     </div>
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-1"></div>
+        <div class="col-md-6">
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <h3 class="panel-title"> News Feed </h3> <!-- or assignments -->
                 </div>
                 <div class="panel-body">
-
+                        <!--News Feed data-->
+                </div>
+                <div class="panel-body">
+                    
                 </div>
             </div>
         </div>
@@ -88,7 +97,7 @@
                     <h3 class="panel-title"> Local Meetups </h3> <!-- meetup api -->
                 </div>
                 <div class="panel-body">
-
+                        <!--Meetup Data-->
                 </div>
                 <div class="panel-body">
                     

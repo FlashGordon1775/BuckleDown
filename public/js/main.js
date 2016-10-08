@@ -125,6 +125,31 @@ function profileController (UFactory, $http) {
         console.log('hi new mentor');
     };
 
+//     pCtrl.document=(function() {
+
+    
+//     var readURL = function(input) {
+//         if (input.files && input.files[0]) {
+//             var reader = new FileReader();
+
+//             reader.onload = function (e) {
+//                 pCtrl('.profile-pic').attr('src', e.target.result);
+//             }
+    
+//             reader.readAsDataURL(input.files[0]);
+//         }
+//     }
+    
+
+//     pCtrl(".file-upload").on('change', function(){
+//         readURL(pCtrl);
+//     });
+    
+//     pCtrl(".upload-button").on('click', function() {
+//        pCtrl(".file-upload").click();
+//     });
+// });
+
 };
 
 function userFactory () {
