@@ -15,7 +15,7 @@
 </section>-->
 
 <section class="container content user-page" ng-init='pCtrl.getProfile()' ng-model="pCtrl.user">
-    <div class="row">
+    <div class="row card">
         <!-- serve info from user database -->
         <div class="col-md-1"></div>
         <div class="col-md-10">
@@ -56,9 +56,13 @@
               </div>
             </div>
                 <div class="panel-footer">
-                    <a type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a> <!-- messenging -->
+                    <a type="button" class="btn btn-sm btn-primary">
+                        <i class="glyphicon glyphicon-envelope"></i> <!-- messenging -->
+                        </a> 
                     <span class="pull-right edit-remove">
                         <a href="" type="button" class="btn btn-sm btn-warning" ng-click="pCtrl.updateProfile()"><i class="glyphicon glyphicon-edit"></i></a>
+                        <!--<button ng-submit="auth.logout.submit()" class="logout" type="submit" class="btn">Logout</button>-->
+                        <!--<a ng-init='auth.logout.submit()' ng-submit="auth.logout.submit()" type="submit" class="btn btn-sm btn-danger" ng-click="auth.logout.submit()">Logout</a>-->
                         <a type="button" class="btn btn-sm btn-danger" href="#/signup">Logout</a>
                     </span>
                 </div>
@@ -84,7 +88,7 @@
                     <h3 class="panel-title"> News Feed </h3> <!-- or assignments -->
                 </div>
                 <div class="panel-body">
-                        <!--News Feed data-->
+                        <!--News Feed data--> 
                 </div>
                 <div class="panel-body">
                     
@@ -105,5 +109,6 @@
             </div>
         </div>
     </div>
+    
 </section>
 

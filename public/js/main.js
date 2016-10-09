@@ -14,24 +14,6 @@ Router.$inject = ["$routeProvider"];
 
 Auth.$inject = ['$http'];
 
-// function facebookController(){
-//     var fCtrl = this;
-//     fCtrl.init = function (s, id) {
-//                 if(window.FB) {
-//                     window.FB._initialized = false;
-//                     return window.FB.XFBML.parse()
-//                 }
-//                 var js;                
-//                 if (document.getElementById(id)) {document.getElementById(id).remove()};
-//                 var fjs = document.getElementsByTagName(s)[0];
-
-//                 js = document.createElement(s); js.id = id;
-//                 js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7";
-//                 fjs.parentNode.insertBefore(js, fjs);
-//                 console.log(js, fjs);
-                
-//                 };
-// }
 
 Router.$inject = ["$routeProvider"];
 
@@ -74,7 +56,7 @@ function Router ($routeProvider){
         });
 }
 
-function profileController (UFactory, $http) {
+function profileController (UFactroy, $http) {
 
     var pCtrl = this;
 
@@ -125,31 +107,20 @@ function profileController (UFactory, $http) {
         console.log('hi new mentor');
     };
 
-//     pCtrl.document=(function() {
-
-    
-//     var readURL = function(input) {
-//         if (input.files && input.files[0]) {
-//             var reader = new FileReader();
-
-//             reader.onload = function (e) {
-//                 pCtrl('.profile-pic').attr('src', e.target.result);
-//             }
-    
-//             reader.readAsDataURL(input.files[0]);
-//         }
-//     }
-    
-
-//     pCtrl(".file-upload").on('change', function(){
-//         readURL(pCtrl);
-//     });
-    
-//     pCtrl(".upload-button").on('click', function() {
-//        pCtrl(".file-upload").click();
-//     });
-// });
-
+    // pCtrl.logout = {
+    //     submit: function($event) {
+    //         $http.post('/logout', pCtrl.user).then(pCtrl.logout.success, pCtrl.logout.error);
+    //     },
+    //     success: function(res) {
+    //         console.info('pCtrl.logout.success')
+    //         location.href = '/#/home';
+    //     },
+    //     error: function(err) {
+    //         console.err('Logout.error');
+    //         pCtrl.logout.alert = alertError;
+    //         pCtrl.logout.message = err.data && err.data.message || 'Logout failed!'
+    //     }
+    // };
 };
 
 function userFactory () {
@@ -191,6 +162,22 @@ function Auth($http) { // auth controller constructor function
             auth.login.message = err.data && err.data.message || 'Login failed!';
         }
     };
+    
+    auth.logout = {
+        submit: function($event) {
+            $http.post('/logout', auth.payload).then(auth.logout.success, auth.logout.error);
+        },
+        success: function(res) {
+            console.info('auth.logout.success')
+            location.href = '/#/signup';
+        },
+        error: function(err) {
+            console.err('Logout.error');
+            auth.logout.alert = alertError;
+            auth.logout.message = err.data && err.data.message || 'Logout failed!'
+        }
+    };
+
     auth.register = {
         submit: function(role) {
             auth.payload.role = role;

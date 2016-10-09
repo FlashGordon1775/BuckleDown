@@ -14,6 +14,8 @@
 
 var Auth = require('./auth');
 
+// var pCtrl = require('../public/js/main');
+
 var User = require('../models/user')
 
 module.exports = function(app) {
@@ -23,8 +25,8 @@ module.exports = function(app) {
         res.sendFile('index.html', {root : './public/html'})
     });
     app.get('/login', Auth.render); // route for the login page
-    app.get('/logout', Auth.logout); // route for logging out
-
+    // app.get('/logout', pCtrl.logout); // route for logging out
+    app.get('logout', Auth.logout);
     app.post('/login', Auth.login); // form request emdpoint for loggin in
     app.post('/register', Auth.register); // form request endpoint for user registration
     app.get('/me', (req, res) => {

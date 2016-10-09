@@ -40,7 +40,7 @@ module.exports = {
     },
     logout: (req, res) => {
         req.session.reset(); // clears the users cookie session
-        res.redirect('/login');
+        res.redirect('/logout');
     },
     login: (req, res) => {
         User.findOne({
