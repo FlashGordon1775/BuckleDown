@@ -13,10 +13,10 @@ li {
 
 body {
     background-color: #c4d4e0;
-    background-size: 20%;
+    /*background-size: 20%;*/
     background-repeat: no-repeat;
     background-position: left bottom;
-    height: 100vh;
+    height: 120vh;
 }
 
 .brand {
@@ -130,14 +130,14 @@ textarea {
     width: 70%;
     height: 80%;
     margin-left: 15%;
-    padding: 50px 0px 50px 0px;
+    padding: 15px 0px 15px 0px;
 }
 
 .info {
     background-color: black;
     color: white;
     opacity: .7;
-    padding: 30px 10px;
+    padding: 20px 10px;
     border-radius: 5px;
 
 }

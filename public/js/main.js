@@ -75,6 +75,14 @@ function profileController (UFactroy, $http) {
                 }
             })
         };
+
+    pCtrl.displayUsers = function (area) {
+        console.log("retrieving user list")
+        return $http.get('/allUsers').then((resp) => {
+            console.log('response data: ', resp.data);
+            pCtrl.users = resp.data;
+        })    
+    }
     
     pCtrl.myVar = false;
 
@@ -95,14 +103,16 @@ function profileController (UFactroy, $http) {
 
     pCtrl.newStudent = function(){
         pCtrl.myVar2 = !pCtrl.myVar2;
+        pCtrl.user.role = 0;
         // pCtrl.user.role = "Mentee";
         console.log('hi new mentee');
     };
 
     pCtrl.myVar3 = false;
 
-    pCtrl.newMentor = function(resp){
+    pCtrl.newMentor = function(){
         pCtrl.myVar3 = !pCtrl.myVar3;
+        pCtrl.user.role = 1;
         // pCtrl.user.role = "Mentor";
         console.log('hi new mentor');
     };

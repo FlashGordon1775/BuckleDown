@@ -26,12 +26,24 @@ module.exports = function(app) {
     });
     app.get('/login', Auth.render); // route for the login page
     // app.get('/logout', pCtrl.logout); // route for logging out
-    app.get('logout', Auth.logout);
+    app.get('/logout', Auth.logout);
     app.post('/login', Auth.login); // form request emdpoint for loggin in
     app.post('/register', Auth.register); // form request endpoint for user registration
     app.get('/me', (req, res) => {
         res.send(req.session.user);
     });
+    app.get('/allUsers', (req, res) => {
+        console.log('in allUsers');
+        User.find((err, users) => {
+            console.log('In User.find: ')
+            if (err) {
+                console.log('users not found:', err);
+            } else {
+                console.log('user result', users);
+                res.send(users);
+            }
+        })
+    })
     
     app.post('/updateProfile', (req,res)=>{
         console.log('sup?' + req.session.user._id);

@@ -16,6 +16,7 @@ var userSchema = mongoose.Schema( {
         // false: "Mentee"
         }, //0 for mentee 1 for mentor
     exp: {type: Number},
+    // accepting: {type: Boolean,}, //0 for no 1 for yes
     area: {type: String}, //Area of focus for mentors and mentees. 
     created: {
             type: Number,

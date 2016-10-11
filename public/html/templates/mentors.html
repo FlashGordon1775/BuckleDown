@@ -1,22 +1,15 @@
-<section class="content page"> <!-- This page and students.html will be removed and replaced with profile.html -->
-    <div>
-        <form class="form" ng-show="mCtrl.myVar1 == true">
-            <input type="text" placeholder="name" ng-model="mCtrl.nameText">
-            <textarea name="" id="input-box" cols="30" rows="10" placeholder="bio" ng-model="mCtrl.bioText"></textarea>
-            <textarea name="" id="input-box" cols="30" rows="10" placeholder="qualifications" ng-model="mCtrl.qualificationsText"></textarea>
-            <button type="submit" class="form-button" ng-click="mCtrl.updateProfile()">Close</button>
-        </form>
-    </div>
-    <div class="profile-info">
+<section class="content page" ng-init='pCtrl.displayUsers()'>
+    <form class="find">
+        <input type="text" placeholder="Filter Mentors" ng-model="pCtrl.user">
+        <button class="find-btn" type="submit" ng-click="pCtrl.searchMentors()">Submit</button>
+    </form>
+    <div ng-repeat="user in pCtrl.users | filter:true:user.role" class="profile-info">
         <div class="info">
-            <h3> {{ mCtrl.nameText }} </h3> 
-            <h5>BIO</h5>
-            <p> {{ mCtrl.bioText }} </p>
-            <h5>Qualifications</h5>
-            <p> {{ mCtrl.qualificationsText }} </p>
-            <button type="submit" class="form-button" ng-click="mCtrl.updateProfile()">Edit</button>
+            <h3> {{ user.name }} </h3>
+            <h5>Profession</h5>
+            <p> {{ user.area }} </p>
+            <h5>Email</h5>
+            <a href=""> {{ user.email }} </a>
         </div>
     </div>
-    <!--<div class="fb-comments" data-href="http://localhost:8080/?#/mentors" data-width="70%" 
-    data-numposts="5" data-colorscheme="dark" ng-init="fCtrl.init('script', 'facebook-jssdk')"></div>-->
 </section>
