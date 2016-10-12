@@ -1,11 +1,11 @@
 <!--<section>
     <div>
-        <!--This div is for user background images-->
-    <!--</div>
+        This div is for user background images
+    </div>
     <div class="content user-page">
         <div>
             <h1 class="heading">Hello!</h1>
-            <p>Ipsum fuck</p>
+            <p>Ipsum</p>
         </div>
         <div class="row">
             <div class="col-sm-6">.col-sm-6</div>
@@ -49,10 +49,10 @@
                                 <td>Years of Experience</td>
                                 <td> {{ pCtrl.user.exp }} </td>
                             </tr>
-                            <!--<tr>
-                                <td>Accepting Mentees</td>
-                                <td> {{ pCtrl.user.accepting }}</td>
-                            </tr>-->
+                            <tr>
+                                <td>About Me</td>
+                                <td> {{ pCtrl.user.about }}</td>
+                            </tr>
                             <tr>
                                 <td>Email:</td>
                                 <td><a href=""> {{ pCtrl.user.email }} </a></td>
@@ -83,7 +83,7 @@
                 <input type="text" placeholder="name" ng-model="pCtrl.user.name">
                 <input type="text" placeholder="Career Field" ng-model="pCtrl.user.area">
                 <input type="text" placeholder="Years Exp" ng-model="pCtrl.user.exp">
-                <!--<input type="text" placeholder="Role" ng-model="pCtrl.user.role">-->
+                <textarea name="about" id="" cols="30" rows="10" ng-model="pCtrl.user.about"></textarea>
                 <input type="text" placeholder="update email" ng-model="pCtrl.user.email">
                 <br>
                 <button type="submit" class="form-button" ng-click="pCtrl.updateProfile()">Save</button>
