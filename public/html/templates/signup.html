@@ -1,46 +1,65 @@
-<section class="content page row">
-    <section class="col-md-10">
-        <div ng-controller="profile as pCtrl">
-            <h4 class="new">New Students</h4>
+<section class="content page">
+    <section class="row" align="center">
+        <div class="col-md-6 panel-body" ng-controller="profile as pCtrl">
+            <h4 ng-hide="pCtrl.myVar2 == true" class="new">New Mentees</h4>
+            <br>
             <input type="image" src="https://www.svgimages.com/svg-image/s3/student-silhouette-256x256.png" class="new-user"
-            ng-click="pCtrl.newStudent()" ng-hide="pCtrl.myVar2 == true" width="30%" height="30%">
-            <form  ng-submit="auth.register.submit(0)" ng-show="pCtrl.myVar2 == true" class="signup-form">
-                <!--<input placeholder="User Image" type="image" ng-model="auth.payload.profilePic">-->
-                <!--<input required placeholder="First and Last Name" type="text" ng-model="auth.payload.name">
-                <input placeholder="Years of Experience" type="text" ng-model="auth.payload.exp"/>
-                <input placeholder="Career Field" type="text" ng-model="auth.payload.area">-->
-                <input required placeholder="Email" type="text" ng-model="auth.payload.email"/>
-                <input required placeholder="Create a password" type="password" ng-model="auth.payload.password"/>
-                <button type="submit" class="btn">Register</button> <!--Upon clicking, bring user to appropriate profile type-->
-                <!--<p ng-class="profileController.register.alert">{{ aControl.register.message }}</p>-->
-            </form>
+            ng-click="pCtrl.newStudent()" ng-hide="pCtrl.myVar2 == true" width="40%" height="40%">
+            <div ng-show="pCtrl.myVar2 == true">
+                <div class="panel-heading col-md-12"><h4 class="heading">Mentee Registration</h4></div>
+                <div class="panel-body about-body"></div>
+                <form  class="panel-body about-body" ng-submit="auth.register.submit(0)" class="signup-form">
+                    <!--<input placeholder="User Image" type="image" ng-model="auth.payload.profilePic">-->
+                    <!--<input required placeholder="First and Last Name" type="text" ng-model="auth.payload.name">
+                    <input placeholder="Years of Experience" type="text" ng-model="auth.payload.exp"/>
+                    <input placeholder="Career Field" type="text" ng-model="auth.payload.area">-->
+                    <input required placeholder="Email" type="text" ng-model="auth.payload.email"/>
+                    <input required placeholder="Create a password" type="password" ng-model="auth.payload.password"/>
+                    <button type="submit" class="form-button">Register</button> <!--Upon clicking, bring user to appropriate profile type-->
+                    <!--<p ng-class="profileController.register.alert">{{ aControl.register.message }}</p>-->
+                </form>
+                <div class="panel-footer"></div>
+            </div>
         </div>
-        <div ng-controller="profile as pCtrl">
-            <h4 class="new">New Mentors</h4>
+        <div class="col-md-6 panel-body" ng-controller="profile as pCtrl">
+            <h4 ng-hide="pCtrl.myVar3 == true" class="new">New Mentors</h4>
+            <br>
             <input type="image" src="http://www.clker.com/cliparts/Y/j/p/0/0/y/business-man-hi.png" class="new-mentor"
-            ng-click="pCtrl.newMentor()" ng-hide="pCtrl.myVar3 == true" width="30%" height="30%">
-            <form  ng-submit="auth.register.submit(1)" ng-show="pCtrl.myVar3 == true" class="signup-form">
-                <!--<input required placeholder="First and Last Name" type="text" ng-model="auth.payload.name">
-                <input placeholder="Years of Experience" type="text" ng-model="auth.payload.exp"/>
-                <input placeholder="Career Field" type="text" ng-model="auth.payload.area">-->
-                <input id="emailId" required placeholder="Email" type="text" ng-model="auth.payload.email"/>
-                <input required placeholder="Create a password" type="password" ng-model="auth.payload.password"/>
-                <button type="submit" class="btn">Register</button> <!--Upon clicking, bring user to appropriate profile type-->
-                <!--<p ng-class="profileController.register.alert">{{ aControl.register.message }}</p>-->
-            </form>
+            ng-click="pCtrl.newMentor()" ng-hide="pCtrl.myVar3 == true" width="20%" height="20%">
+            <div ng-show="pCtrl.myVar3 == true">
+                <div class="panel-heading col-md-12"><h4 class="heading">Mentor Registration</h4></div>
+                <div class="panel-body about-body"></div>
+                <form class="panel-body about-body" ng-submit="auth.register.submit(1)" ng-show="pCtrl.myVar3 == true" class="signup-form">
+                    <!--<input required placeholder="First and Last Name" type="text" ng-model="auth.payload.name">
+                    <input placeholder="Years of Experience" type="text" ng-model="auth.payload.exp"/>
+                    <input placeholder="Career Field" type="text" ng-model="auth.payload.area">-->
+                    <input id="emailId" required placeholder="Email" type="text" ng-model="auth.payload.email"/>
+                    <input required placeholder="Create a password" type="password" ng-model="auth.payload.password"/>
+                    <button type="submit" class="form-button">Register</button> <!--Upon clicking, bring user to appropriate profile type-->
+                    <!--<p ng-class="profileController.register.alert">{{ aControl.register.message }}</p>-->
+                </form>
+                <div class="panel-footer"></div>
+            </div>
         </div>
-        <section>
-            <div class="loginstuff col-md-12" ng-controller="module.auth.controller as auth">        
-                <h4 class="login">Already a member?</h4><button class="form-button" ng-click="auth.existingUser()">Login</button> 
-                <form ng-submit="auth.login.submit()" class="signup-form" ng-show="auth.myVar == true">
+        </section>
+    <section>
+        <div class="loginstuff col-md-12" ng-controller="module.auth.controller as auth" align="center">        
+            <h4 ng-hide="auth.myVar == true" class="login">Already a member?</h4><button ng-hide="auth.myVar == true" class="form-button" ng-click="auth.existingUser()">Login</button> 
+            <div ng-show="auth.myVar == true">
+                <div class="panel-heading col-md-12"><h4 class="heading">Login</h4></div>
+                <div class="panel-body about-body"></div>
+                <form class="panel-body about-body" ng-submit="auth.login.submit()" class="signup-form">
             
                     <input class="login" required placeholder="Email" type="email" ng-model="auth.payload.email"/>
             
                     <input class="login" required placeholder="Password" type="password" ng-model="auth.payload.password"/>
-                    <button class="login" type="submit" class="btn">Login</button>
+
+                    <button class="form-button" type="submit">Login</button>
                     <!--<p ng-class="aControl.login.alert">{{ aControl.login.message }}</p>-->
                 </form>
+                <div class="panel-body about-body"><h3 class="welcome">Welcome Back!</h3></div>
+                <div class="panel-footer"></div>
             </div>
-        </section>    
-    </section>
+        </div>
+    </section>    
 </section>

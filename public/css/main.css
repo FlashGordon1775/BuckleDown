@@ -16,7 +16,7 @@ body {
     /*background-size: 20%;*/
     background-repeat: no-repeat;
     background-position: left bottom;
-    height: 120vh;
+    height: 100vh;
 }
 
 .brand {
@@ -158,11 +158,17 @@ textarea {
 
 h2 {
     top: 50px;
-    text-align: right;
+    text-align: center;
     padding: 50px 20px 0px 0px;
     margin: 0;
-    color: #193446;
+    color: #d1a827;
     border-bottom: 1px solid #193446;
+}
+
+.welcome {
+    margin: 0;
+    text-align: center;
+    color: #193446;
 }
 
 h5 {
@@ -171,20 +177,22 @@ h5 {
 }
 
 .new-user {
-    margin-left: 20%;
+    /*margin-left: 20%;*/
     height: 20%;
     width: 20%;
 }
 
 .new-mentor {
-    margin-left: 20%;
-    height: 20%;
-    width: 20%;
+    /*margin-left: 20%;*/
+    height: 18%;
+    width: 18%;
 
 }
 
-img {
+.banner {
     width: 100%;
+    /*margin-left: 25%;*/
+    border: 4px solid #193446;
 }
 
 .logo {
@@ -228,8 +236,36 @@ img {
     color: #d1a827 !important;
 }
 
+.about-body {
+    background-color: white;
+    /*border-left: 4px solid #193446;
+    border-right: 4px solid #193446;*/
+    margin: 0;
+}
+
+.panel-body {
+    padding: 5px !important;
+}
+
 .edit-remove {
     display: inline;
     vertical-align: middle;
 }
 
+.landing-page {
+   overflow-y: hidden;
+    }
+
+.landing {
+    /*margin-left: 25%;*/
+    width: 100%;
+    height: 100%;
+}
+
+.fade-text {
+    color: slategrey;
+}
+
+.about-img {
+    padding: 2px;
+}

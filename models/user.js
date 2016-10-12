@@ -10,11 +10,7 @@ var userSchema = mongoose.Schema( {
     name: {type: String},
     email: {type:String},
     password: {type: String}, //encrypted
-    role: {
-        type: Boolean,
-        // true: "Mentor",
-        // false: "Mentee"
-        }, //0 for mentee 1 for mentor
+    role: { type: String}, // either "Mentee" or "Mentor"
     exp: {type: Number},
     // accepting: {type: Boolean,}, //0 for no 1 for yes
     area: {type: String}, //Area of focus for mentors and mentees. 

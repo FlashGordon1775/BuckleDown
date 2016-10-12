@@ -60,50 +60,56 @@ function profileController (UFactroy, $http) {
 
     var pCtrl = this;
 
+    pCtrl.user = null;
 
     pCtrl.getProfile = function () {
         return $http.get('/me').then((resp) => {
 
                 pCtrl.user = resp.data;
 
-            if ( pCtrl.user.role === false ) { 
-                console.log("Mentee as 0");
-                pCtrl.user.role = "Mentee";
-            } else {
-                console.log("Mentor as 1");
-                pCtrl.user.role = "Mentor";
-                }
             })
         };
 
     pCtrl.displayUsers = function (area) {
         console.log("retrieving user list")
-        return $http.get('/allUsers').then((resp) => {
-            console.log('response data: ', resp.data);
-            pCtrl.users = resp.data;
-        })    
-    }
-    
-    pCtrl.myVar = false;
+        return $http.get('/allUsers').then((resp) => {      // I think this is changing all users to mentors when a user navigates to the page.
+            console.log('response data: ', resp.data);      // It may also have something to do with the ng-repeat filter
+            pCtrl.users = resp.data;                        // Never mind. Mentees are turning into mentors when I navigate to any page / refresh / save the update form
+        })                                                  // So, if I enter any data into the updateProfile form, then the role changes. I don't even need to hit save.'
+    }                                                       // I can open the form, then close it by clicking the update button, and it still changes the role
+                                                            // If I don't ever update the mentee, they don't change roles. Clicking the update button initiates the change.
+    pCtrl.myVar = false;                                    // Wrote a new function for the update button. The problem is surely in the updateProfile function.
 
     console.log('hello');
 
-    pCtrl.updateProfile = function () {
+    pCtrl.displayForm = function () {
         pCtrl.myVar = !pCtrl.myVar;
+    }
+
+    pCtrl.updateProfile = function () {
                     
         $http.post('/updateProfile', pCtrl.user).success(function(){
                 console.log("success");
-            }).error(function(error){
+            }).error(function(error){                               
                     console.log("error");
             })
+            pCtrl.myVar = !pCtrl.myVar;
         };
+
+    pCtrl.roleString = function () {
+        if (pCtrl.user.role){
+            return "Mentor";
+        } else {
+            return "Mentee";
+        }
+    }
 
 
     pCtrl.myVar2 = false;
 
     pCtrl.newStudent = function(){
         pCtrl.myVar2 = !pCtrl.myVar2;
-        pCtrl.user.role = 0;
+        // pCtrl.user.role = 0;
         // pCtrl.user.role = "Mentee";
         console.log('hi new mentee');
     };
@@ -112,7 +118,7 @@ function profileController (UFactroy, $http) {
 
     pCtrl.newMentor = function(){
         pCtrl.myVar3 = !pCtrl.myVar3;
-        pCtrl.user.role = 1;
+        // pCtrl.user.role = 1;
         // pCtrl.user.role = "Mentor";
         console.log('hi new mentor');
     };
@@ -190,7 +196,12 @@ function Auth($http) { // auth controller constructor function
 
     auth.register = {
         submit: function(role) {
-            auth.payload.role = role;
+            if (role){
+                auth.payload.role = "Mentor";
+            } else {
+                auth.payload.role = "Mentee";
+            }
+            
             $http.post('/register', auth.payload).then(auth.register.success, auth.register.error);
         },
         success: function(res) {

@@ -3,7 +3,7 @@
         <input type="text" placeholder="Filter Mentors" ng-model="pCtrl.user">
         <button class="find-btn" type="submit" ng-click="pCtrl.searchMentors()">Submit</button>
     </form>
-    <div ng-repeat="user in pCtrl.users | filter:true:user.role" class="profile-info">
+    <div ng-repeat="user in pCtrl.users | filter:'Mentor':user.role" class="profile-info">
         <div class="info">
             <h3> {{ user.name }} </h3>
             <h5>Profession</h5>
